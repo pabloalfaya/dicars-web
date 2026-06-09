@@ -35,8 +35,10 @@ const VIDEOS: VideoYoutube[] = [
   },
 ];
 
-export default function Home() {
-  const destacados = getCochesDestacados();
+export const revalidate = 60;
+
+export default async function Home() {
+  const destacados = await getCochesDestacados();
 
   return (
     <>
@@ -174,11 +176,17 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {destacados.map((coche) => (
-              <CarCard key={coche.slug} coche={coche} />
-            ))}
-          </div>
+          {destacados.length > 0 ? (
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {destacados.map((coche) => (
+                <CarCard key={coche._id} coche={coche} />
+              ))}
+            </div>
+          ) : (
+            <p className="mt-12 text-center text-muted-foreground">
+              Pronto publicaremos nuestros coches destacados.
+            </p>
+          )}
 
           <div className="mt-12 flex justify-center">
             <Link

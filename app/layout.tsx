@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsappFloat } from "@/components/whatsapp-float";
+import { SiteChrome } from "@/components/site-chrome";
 
 // Montserrat: fuente primaria (titulares y marca)
 const montserrat = Montserrat({
@@ -43,10 +44,17 @@ export default function RootLayout({
       className={`${montserrat.variable} ${publicSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
-        <WhatsappFloat />
+        <SiteChrome
+          header={<SiteHeader />}
+          footer={
+            <>
+              <SiteFooter />
+              <WhatsappFloat />
+            </>
+          }
+        >
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

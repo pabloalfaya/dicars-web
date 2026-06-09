@@ -2,22 +2,26 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  coches,
   getCochePorSlug,
+  getSlugsCoches,
   formatearKilometros,
   formatearPrecio,
 } from "@/lib/cars";
 import { CarThumb } from "@/components/car-thumb";
+import { CarImage } from "@/components/car-image";
 
-export function generateStaticParams() {
-  return coches.map((coche) => ({ slug: coche.slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const slugs = await getSlugsCoches();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps<"/stock/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const coche = getCochePorSlug(slug);
+  const coche = await getCochePorSlug(slug);
   if (!coche) return { title: "Coche no encontrado" };
   return {
     title: `${coche.marca} ${coche.modelo}`,
@@ -29,9 +33,12 @@ export default async function FichaCochePage({
   params,
 }: PageProps<"/stock/[slug]">) {
   const { slug } = await params;
-  const coche = getCochePorSlug(slug);
+  const coche = await getCochePorSlug(slug);
 
   if (!coche) notFound();
+
+  const fotos = coche.fotos ?? [];
+  const tieneFotos = fotos.length > 0;
 
   const ficha = [
     { etiqueta: "Año", valor: String(coche.anio) },
@@ -52,11 +59,43 @@ export default async function FichaCochePage({
       </Link>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
-        <CarThumb
-          marca={coche.marca}
-          modelo={coche.modelo}
-          className="aspect-[4/3] w-full rounded-3xl"
-        />
+        <div>
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-border bg-muted">
+            {tieneFotos ? (
+              <CarImage
+                foto={fotos[0]}
+                alt={`${coche.marca} ${coche.modelo}`}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <CarThumb
+                marca={coche.marca}
+                modelo={coche.modelo}
+                className="absolute inset-0 h-full w-full"
+              />
+            )}
+          </div>
+
+          {fotos.length > 1 && (
+            <div className="mt-4 grid grid-cols-4 gap-3">
+              {fotos.slice(1, 5).map((foto, i) => (
+                <div
+                  key={i}
+                  className="relative aspect-square overflow-hidden rounded-xl border border-border bg-muted"
+                >
+                  <CarImage
+                    foto={foto}
+                    alt={`${coche.marca} ${coche.modelo} — foto ${i + 2}`}
+                    sizes="(max-width: 1024px) 25vw, 12vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div>
           <p className="text-sm font-medium text-muted-foreground">
@@ -82,9 +121,11 @@ export default async function FichaCochePage({
             ))}
           </dl>
 
-          <p className="mt-8 leading-relaxed text-muted-foreground">
-            {coche.descripcion}
-          </p>
+          {coche.descripcion && (
+            <p className="mt-8 leading-relaxed text-muted-foreground">
+              {coche.descripcion}
+            </p>
+          )}
 
           <Link
             href="/contacto"

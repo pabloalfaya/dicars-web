@@ -6,6 +6,7 @@ import {
   formatearPrecio,
 } from "@/lib/cars";
 import { CarThumb } from "@/components/car-thumb";
+import { CarImage } from "@/components/car-image";
 
 const ESTILO_ESTADO: Record<EstadoCoche, string> = {
   Disponible: "bg-emerald-100 text-emerald-800",
@@ -19,14 +20,23 @@ export function CarCard({ coche }: { coche: Coche }) {
       href={`/stock/${coche.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-muted transition hover:-translate-y-0.5 hover:border-primary/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
-      <div className="relative">
-        <CarThumb
-          marca={coche.marca}
-          modelo={coche.modelo}
-          className="aspect-[4/3] w-full"
-        />
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
+        {coche.fotos && coche.fotos.length > 0 ? (
+          <CarImage
+            foto={coche.fotos[0]}
+            alt={`${coche.marca} ${coche.modelo}`}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition group-hover:scale-105"
+          />
+        ) : (
+          <CarThumb
+            marca={coche.marca}
+            modelo={coche.modelo}
+            className="absolute inset-0 h-full w-full"
+          />
+        )}
         <span
-          className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-xs font-semibold ${ESTILO_ESTADO[coche.estado]}`}
+          className={`absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-xs font-semibold ${ESTILO_ESTADO[coche.estado]}`}
         >
           {coche.estado}
         </span>
