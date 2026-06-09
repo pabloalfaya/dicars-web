@@ -39,8 +39,8 @@
   --color-ring: var(--ring);
 
   /* Tipografías */
-  --font-sans: var(--font-source-sans), system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-public-sans), system-ui, sans-serif;
+  --font-serif: var(--font-montserrat), system-ui, sans-serif;
 }
 
 body {

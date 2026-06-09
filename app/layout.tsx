@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Montserrat, Public_Sans } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsappFloat } from "@/components/whatsapp-float";
 
-// Fraunces: titulares (serif elegante pero cercana)
-const fraunces = Fraunces({
+// Montserrat: fuente primaria (titulares y marca)
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
-// Source Sans 3: texto de interfaz y cuerpo
-const sourceSans = Source_Sans_3({
+// Public Sans: fuente de texto (cuerpo e interfaz)
+const publicSans = Public_Sans({
   subsets: ["latin"],
-  variable: "--font-source-sans",
+  variable: "--font-public-sans",
   display: "swap",
 });
 
@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${fraunces.variable} ${sourceSans.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${publicSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <SiteHeader />
