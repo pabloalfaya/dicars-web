@@ -3,6 +3,7 @@ import { Fraunces, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { WhatsappFloat } from "@/components/whatsapp-float";
 
 // Fraunces: titulares (serif elegante pero cercana)
 const fraunces = Fraunces({
@@ -26,8 +27,8 @@ export const metadata: Metadata = {
   description:
     "Importamos tu coche desde Alemania a España: búsqueda, inspección, transporte y documentación sin sorpresas.",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo1.png",
+    apple: "/logo1.png",
   },
 };
 
@@ -45,6 +46,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <WhatsappFloat />
       </body>
     </html>
   );

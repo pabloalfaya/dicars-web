@@ -1,8 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/logo.png";
+import logo from "@/public/logo1.png";
 import { getCochesDestacados } from "@/lib/cars";
 import { CarCard } from "@/components/car-card";
+import {
+  miniaturaYoutube,
+  urlYoutube,
+  type VideoYoutube,
+} from "@/lib/youtube";
 
 const VENTAJAS = [
   "Asesoramiento cercano y un solo interlocutor.",
@@ -10,18 +15,23 @@ const VENTAJAS = [
   "Gestión completa de transporte y matriculación.",
 ];
 
-const VIDEOS = [
+const VIDEOS: VideoYoutube[] = [
   {
-    titulo: "Así importo un coche desde Alemania paso a paso",
-    etiqueta: "+2.000 km",
+    id: "Cl_rUOkkpe4",
+    titulo: "🇩🇪 IMPORTAMOS un PORSCHE +35K€ de Alemania | ¿Merece la pena?",
+    url: urlYoutube("Cl_rUOkkpe4"),
   },
   {
-    titulo: "Cuánto cuesta de verdad importar un coche",
-    etiqueta: "Sin sorpresas",
+    id: "YVf-6yAWUvE",
+    titulo:
+      "IMPORTANDO este AUDI S3 // ASÍ TRABAJA un IMPORTADOR AUTÓNOMO en ESPAÑA",
+    url: urlYoutube("YVf-6yAWUvE"),
   },
   {
-    titulo: "Los 5 errores que debes evitar al importar",
-    etiqueta: "Ahorra dinero",
+    id: "uwcCDpoXPSE",
+    titulo:
+      "IMPORTAMOS un GTI desde ALEMANIA 🇩🇪 - // Peugeot 208 GTi 🚗 // VLOG",
+    url: urlYoutube("uwcCDpoXPSE"),
   },
 ];
 
@@ -195,28 +205,49 @@ export default function Home() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {VIDEOS.map((video) => (
             <a
-              key={video.titulo}
-              href="#"
+              key={video.id}
+              href={video.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group overflow-hidden rounded-2xl border border-border bg-muted transition hover:-translate-y-0.5 hover:border-primary/50"
             >
-              <div className="relative flex aspect-video items-center justify-center bg-gradient-to-br from-zinc-700 to-zinc-900">
-                <span className="absolute left-3 top-3 rounded bg-black/60 px-2 py-1 text-xs font-bold text-primary">
-                  {video.etiqueta}
-                </span>
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-zinc-900 transition group-hover:scale-110">
+              <div className="relative aspect-video overflow-hidden bg-zinc-900">
+                <Image
+                  src={miniaturaYoutube(video.id)}
+                  alt={video.titulo}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover transition group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/25 transition group-hover:bg-black/35" />
+                <span className="absolute left-3 top-3 flex items-center gap-1 rounded bg-black/70 px-2 py-1 text-xs font-bold text-white">
                   <svg
-                    width="22"
-                    height="22"
+                    width="14"
+                    height="14"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"
                   >
-                    <path d="M8 5v14l11-7z" />
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.7 15.5V8.5L15.8 12l-6.1 3.5Z" />
                   </svg>
+                  YouTube
+                </span>
+                <span className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-zinc-900 shadow-lg transition group-hover:scale-110">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
                 </span>
               </div>
               <div className="p-5">
-                <h3 className="font-serif text-lg font-semibold leading-snug text-foreground">
+                <h3 className="font-serif text-lg font-semibold leading-snug text-foreground line-clamp-3">
                   {video.titulo}
                 </h3>
               </div>
@@ -226,7 +257,9 @@ export default function Home() {
 
         <div className="mt-12 flex justify-center">
           <a
-            href="#"
+            href="https://youtube.com/@dicarsimports"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full border border-border px-7 py-3 text-sm font-bold uppercase tracking-[0.2em] text-foreground transition hover:border-primary hover:text-primary"
           >
             Ver canal completo
