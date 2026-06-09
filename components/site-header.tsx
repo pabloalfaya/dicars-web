@@ -26,7 +26,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         {/* Logo */}
         <Link
           href="/"
@@ -34,7 +34,7 @@ export function SiteHeader() {
           aria-label="Dicars — Inicio"
           onClick={() => setAbierto(false)}
         >
-          <Image src={logo} alt="Dicars" priority className="h-10 w-auto" />
+          <Image src={logo} alt="Dicars" priority className="h-12 w-auto" />
         </Link>
 
         {/* Navegación de escritorio (centrada) */}
@@ -48,7 +48,7 @@ export function SiteHeader() {
                 className={`whitespace-nowrap border-b-2 pb-0.5 text-xs font-semibold uppercase tracking-[0.15em] transition ${
                   activo
                     ? "border-primary text-primary"
-                    : "border-transparent text-muted-foreground hover:text-foreground"
+                    : "border-transparent text-white hover:text-white/80"
                 }`}
               >
                 {enlace.label}
@@ -103,7 +103,7 @@ export function SiteHeader() {
                 className={`rounded-md px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] transition hover:bg-muted ${
                   esActivo(pathname, enlace.href)
                     ? "text-primary"
-                    : "text-foreground"
+                    : "text-white"
                 }`}
               >
                 {enlace.label}

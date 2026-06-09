@@ -50,5 +50,5 @@ body {
 
 /* Compensa la cabecera fija al saltar a anclas internas */
 html {
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { PaymentMethods } from "@/components/payment-methods";
 
 export const metadata: Metadata = {
   title: "Guía de importación 2026",
@@ -121,10 +122,11 @@ export default function GuiaPage() {
                 aria-disabled="true"
                 title="El pago online estará disponible próximamente"
               >
-                Añadir al carrito
+                Comprar ahora
               </button>
+              <PaymentMethods />
               <p className="text-center text-xs text-muted-foreground">
-                Pago online disponible muy pronto. Mientras tanto,{" "}
+                El pago online estará activo muy pronto. Mientras tanto,{" "}
                 <Link href="/contacto" className="text-primary hover:underline">
                   escríbenos
                 </Link>{" "}
