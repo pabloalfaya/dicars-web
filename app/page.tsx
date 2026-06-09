@@ -28,10 +28,10 @@ const VIDEOS: VideoYoutube[] = [
     url: urlYoutube("YVf-6yAWUvE"),
   },
   {
-    id: "uwcCDpoXPSE",
+    id: "khz_KJNt9NI",
     titulo:
-      "IMPORTAMOS un GTI desde ALEMANIA 🇩🇪 - // Peugeot 208 GTi 🚗 // VLOG",
-    url: urlYoutube("uwcCDpoXPSE"),
+      "El MEJOR GTI que puedes COMPRAR en ALEMANIA // IMPORTANDO coches de ALEMANIA",
+    url: urlYoutube("khz_KJNt9NI"),
   },
 ];
 
@@ -134,31 +134,14 @@ export default async function Home() {
             </ul>
           </div>
 
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-zinc-700 to-zinc-900">
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-zinc-400">
-              <svg
-                viewBox="0 0 120 48"
-                className="w-2/3 max-w-[220px] text-white/80"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M8 34h104M18 34c0-3.3 2.7-6 6-6s6 2.7 6 6M90 34c0-3.3 2.7-6 6-6s6 2.7 6 6"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M14 34c-3 0-5-2-5-5v-4c0-2 1-3 3-4l10-3 8-6c2-1.5 4-2 7-2h20c3 0 5 1 7 3l6 7 14 2c4 .6 7 2 9 5 1 1.5 1.5 3 1.5 5 0 1.6-1.3 3-3 3"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-xs uppercase tracking-[0.2em]">
-                Imagen de muestra
-              </span>
-            </div>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-muted">
+            <Image
+              src="/bienvenidos.JPEG"
+              alt="Equipo Dicars"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
