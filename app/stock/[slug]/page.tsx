@@ -44,6 +44,13 @@ export default async function FichaCochePage({
     { etiqueta: "Combustible", valor: coche.combustible },
     { etiqueta: "Transmisión", valor: coche.transmision },
     { etiqueta: "Estado", valor: coche.estado },
+    {
+      etiqueta: "Extras",
+      valor:
+        coche.extras && coche.extras.length > 0
+          ? coche.extras.join(", ")
+          : "—",
+    },
   ];
 
   return (

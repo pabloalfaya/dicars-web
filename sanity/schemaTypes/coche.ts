@@ -80,6 +80,15 @@ export const coche = defineType({
       rows: 4,
     }),
     defineField({
+      name: "extras",
+      title: "Extras",
+      description:
+        "Equipamiento y extras del coche (techo panorámico, cuero, navegador…). Un extra por línea.",
+      type: "array",
+      of: [{ type: "string" }],
+      options: { layout: "list" },
+    }),
+    defineField({
       name: "fotos",
       title: "Fotos",
       type: "array",

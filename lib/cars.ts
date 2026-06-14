@@ -26,6 +26,7 @@ export type Coche = {
   estado: EstadoCoche;
   destacado: boolean;
   descripcion?: string;
+  extras?: string[];
   fotos?: CocheFoto[];
 };
 

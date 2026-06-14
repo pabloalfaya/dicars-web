@@ -13,6 +13,7 @@ const cocheFields = `
   estado,
   destacado,
   descripcion,
+  extras,
   fotos
 `;
 
