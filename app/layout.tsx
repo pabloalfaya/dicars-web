@@ -28,8 +28,9 @@ export const metadata: Metadata = {
   description:
     "Importamos tu coche desde Alemania a España: búsqueda, inspección, transporte y documentación sin sorpresas.",
   icons: {
-    icon: "/logo1.png",
+    icon: [{ url: "/logo1.png", type: "image/png" }],
     apple: "/logo1.png",
+    shortcut: "/logo1.png",
   },
 };
 
