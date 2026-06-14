@@ -9,14 +9,16 @@ export function CarImage({
   sizes,
   className = "object-cover",
   priority = false,
+  ancho = 1000,
 }: {
   foto: CocheFoto;
   alt: string;
   sizes?: string;
   className?: string;
   priority?: boolean;
+  ancho?: number;
 }) {
-  const src = urlForImage(foto).width(1000).quality(80).url();
+  const src = urlForImage(foto).width(ancho).quality(80).url();
 
   return (
     <Image
