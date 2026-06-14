@@ -7,8 +7,7 @@ import {
   formatearKilometros,
   formatearPrecio,
 } from "@/lib/cars";
-import { CarThumb } from "@/components/car-thumb";
-import { CarImage } from "@/components/car-image";
+import { CarGallery } from "@/components/car-gallery";
 
 export const revalidate = 60;
 
@@ -38,7 +37,6 @@ export default async function FichaCochePage({
   if (!coche) notFound();
 
   const fotos = coche.fotos ?? [];
-  const tieneFotos = fotos.length > 0;
 
   const ficha = [
     { etiqueta: "Año", valor: String(coche.anio) },
@@ -59,45 +57,9 @@ export default async function FichaCochePage({
       </Link>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
-        <div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-border bg-muted">
-            {tieneFotos ? (
-              <CarImage
-                foto={fotos[0]}
-                alt={`${coche.marca} ${coche.modelo}`}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-                priority
-              />
-            ) : (
-              <CarThumb
-                marca={coche.marca}
-                modelo={coche.modelo}
-                className="absolute inset-0 h-full w-full"
-              />
-            )}
-          </div>
+        <CarGallery fotos={fotos} marca={coche.marca} modelo={coche.modelo} />
 
-          {fotos.length > 1 && (
-            <div className="mt-4 grid grid-cols-4 gap-3">
-              {fotos.slice(1, 5).map((foto, i) => (
-                <div
-                  key={i}
-                  className="relative aspect-square overflow-hidden rounded-xl border border-border bg-muted"
-                >
-                  <CarImage
-                    foto={foto}
-                    alt={`${coche.marca} ${coche.modelo} — foto ${i + 2}`}
-                    sizes="(max-width: 1024px) 25vw, 12vw"
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div>
+        <div className="order-2 lg:col-start-2 lg:row-start-1">
           <p className="text-sm font-medium text-muted-foreground">
             {coche.marca}
           </p>
