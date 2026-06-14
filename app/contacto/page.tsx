@@ -3,9 +3,15 @@ import Link from "next/link";
 import { CONTACTO } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Contacto",
+  title: "Contacto — Importa tu coche de Alemania",
   description:
-    "Ponte en contacto con Dicars para pedir presupuesto o resolver tus dudas sobre la importación de tu coche.",
+    "Contacta con Dicars para importar tu coche desde Alemania a España: pide presupuesto o resuelve tus dudas sobre la importación de coches.",
+  alternates: { canonical: "/contacto" },
+  openGraph: {
+    title: "Contacto — Importa tu coche de Alemania",
+    description:
+      "Contacta con Dicars para importar tu coche desde Alemania a España: pide presupuesto o resuelve tus dudas sobre la importación de coches.",
+  },
 };
 
 const CANALES = [

@@ -21,12 +21,32 @@ const publicSans = Public_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dicars.es"),
   title: {
-    default: "Dicars — Importación de coches desde Alemania",
-    template: "%s | Dicars",
+    default: "Dicars — Coches importados desde Alemania a España",
+    template: "%s | Dicars — Coches importados de Alemania",
   },
   description:
-    "Importamos tu coche desde Alemania a España: búsqueda, inspección, transporte y documentación sin sorpresas.",
+    "Importamos coches desde Alemania a España: búsqueda, inspección, transporte y matriculación. Tu coche importado de Alemania, revisado y sin sorpresas.",
+  keywords: [
+    "coches importados de Alemania",
+    "importar coche de Alemania",
+    "importación de coches desde Alemania",
+    "comprar coche en Alemania",
+    "coches de importación Alemania España",
+    "Dicars",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    siteName: "Dicars",
+    title: "Dicars — Coches importados desde Alemania a España",
+    description:
+      "Importamos coches desde Alemania a España: búsqueda, inspección, transporte y matriculación. Tu coche importado de Alemania, revisado y sin sorpresas.",
+  },
   icons: {
     icon: [{ url: "/favicondicars.png", type: "image/png" }],
     apple: "/favicondicars.png",

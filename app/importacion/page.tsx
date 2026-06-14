@@ -3,9 +3,15 @@ import Link from "next/link";
 import { CarThumb } from "@/components/car-thumb";
 
 export const metadata: Metadata = {
-  title: "Importación",
+  title: "Cómo importar coches de Alemania",
   description:
-    "Importamos tu coche desde Alemania a España de forma personalizada: búsqueda, inspección, transporte y documentación con un único interlocutor.",
+    "Te explicamos cómo importar tu coche desde Alemania a España: búsqueda, inspección, transporte y matriculación con un único interlocutor.",
+  alternates: { canonical: "/importacion" },
+  openGraph: {
+    title: "Cómo importar coches de Alemania",
+    description:
+      "Te explicamos cómo importar tu coche desde Alemania a España: búsqueda, inspección, transporte y matriculación con un único interlocutor.",
+  },
 };
 
 const PUNTOS = [

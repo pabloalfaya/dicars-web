@@ -22,9 +22,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const coche = await getCochePorSlug(slug);
   if (!coche) return { title: "Coche no encontrado" };
+
+  const titulo = `${coche.marca} ${coche.modelo} importado de Alemania`;
+  const descripcion =
+    coche.descripcion ??
+    `${coche.marca} ${coche.modelo} de ${coche.anio} importado desde Alemania: ${formatearKilometros(
+      coche.kilometros,
+    )}, ${coche.combustible}, ${coche.transmision}. Disponible en Dicars.`;
+
   return {
-    title: `${coche.marca} ${coche.modelo}`,
-    description: coche.descripcion,
+    title: titulo,
+    description: descripcion,
+    alternates: { canonical: `/stock/${coche.slug}` },
+    openGraph: {
+      title: titulo,
+      description: descripcion,
+    },
   };
 }
 

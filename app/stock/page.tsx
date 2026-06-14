@@ -3,9 +3,15 @@ import { getCoches } from "@/lib/cars";
 import { CarCard } from "@/components/car-card";
 
 export const metadata: Metadata = {
-  title: "Stock",
+  title: "Stock de coches importados de Alemania",
   description:
-    "Coches disponibles importados desde Alemania. Consulta nuestro stock actualizado.",
+    "Descubre nuestro stock de coches importados desde Alemania, revisados y listos. Catálogo actualizado continuamente en Dicars.",
+  alternates: { canonical: "/stock" },
+  openGraph: {
+    title: "Stock de coches importados de Alemania",
+    description:
+      "Descubre nuestro stock de coches importados desde Alemania, revisados y listos. Catálogo actualizado continuamente en Dicars.",
+  },
 };
 
 export const revalidate = 60;

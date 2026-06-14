@@ -4,9 +4,15 @@ import Link from "next/link";
 import { PaymentMethods } from "@/components/payment-methods";
 
 export const metadata: Metadata = {
-  title: "Guía de importación 2026",
+  title: "Guía para importar coches de Alemania 2026",
   description:
-    "Guía digital ¿Cómo importar un vehículo de Alemania? 2026. Trámite a trámite, paso a paso, para importar tu coche sin errores ni costes ocultos.",
+    "Guía digital para importar coches de Alemania paso a paso en 2026: trámites, documentación, impuestos y cómo evitar costes ocultos al importar tu coche.",
+  alternates: { canonical: "/guia" },
+  openGraph: {
+    title: "Guía para importar coches de Alemania 2026",
+    description:
+      "Guía digital para importar coches de Alemania paso a paso en 2026: trámites, documentación, impuestos y cómo evitar costes ocultos al importar tu coche.",
+  },
 };
 
 const PRECIO = "64,99 €";

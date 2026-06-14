@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import { PagePlaceholder } from "@/components/page-placeholder";
 
 export const metadata: Metadata = {
-  title: "Sobre nosotros",
+  title: "Sobre nosotros — Especialistas en importar coches de Alemania",
   description:
-    "Quiénes somos en Dicars: nuestra historia y propuesta de valor en la importación de coches desde Alemania.",
+    "Conoce a Dicars, especialistas en importación de coches desde Alemania a España: cercanía, transparencia y gestión completa de principio a fin.",
+  alternates: { canonical: "/sobre-nosotros" },
+  openGraph: {
+    title: "Sobre nosotros — Especialistas en importar coches de Alemania",
+    description:
+      "Conoce a Dicars, especialistas en importación de coches desde Alemania a España: cercanía, transparencia y gestión completa de principio a fin.",
+  },
 };
 
 export default function SobreNosotrosPage() {
