@@ -22,8 +22,8 @@ export default async function StockPage() {
             Nuestro stock
           </h1>
           <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
-            Coches importados desde Alemania, revisados y listos para
-            matricular. Actualizamos el catálogo continuamente.
+            Coches importados desde Alemania, revisados. Actualizamos el
+            catálogo continuamente.
           </p>
           {coches.length > 0 && (
             <p className="mt-4 text-sm font-medium text-muted-foreground">
