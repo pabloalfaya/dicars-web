@@ -19,6 +19,17 @@ const PRECIO = "64,99 €";
 const RESENAS = 45;
 const IMAGEN_PORTADA = "/guiaimportacion.jpg";
 
+const RECURSOS_GUIA = [
+  {
+    formato: "PDF",
+    texto: "Te entregamos un PDF con todos los pasos y enlaces.",
+  },
+  {
+    formato: "XLS",
+    texto: "Te brindamos una calculadora de gastos en Excel.",
+  },
+];
+
 const INCLUYE = [
   "El trámite completo, paso a paso, explicado de forma sencilla.",
   "Qué documentación necesitas (Ficha Técnica, DNI, impresos de matriculación).",
@@ -80,16 +91,39 @@ export default function GuiaPage() {
       {/* PRODUCTO */}
       <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          {/* Imagen del producto */}
-          <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-muted">
-            <Image
-              src={IMAGEN_PORTADA}
-              alt="Guía: ¿Cómo importar un vehículo de Alemania? 2026"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
+          {/* Imagen del producto y recursos incluidos */}
+          <div className="flex flex-col gap-6">
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-muted">
+              <Image
+                src={IMAGEN_PORTADA}
+                alt="Guía: ¿Cómo importar un vehículo de Alemania? 2026"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+
+            <div>
+              <h2 className="font-serif text-lg font-semibold uppercase tracking-[0.12em] text-foreground sm:text-xl">
+                Trámite a trámite paso a paso
+              </h2>
+              <div className="mt-4 flex flex-col gap-4">
+                {RECURSOS_GUIA.map((recurso) => (
+                  <div
+                    key={recurso.formato}
+                    className="rounded-2xl border border-border bg-muted p-5"
+                  >
+                    <span className="inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-primary/15 px-3 font-serif text-sm font-bold uppercase tracking-wide text-primary">
+                      {recurso.formato}
+                    </span>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {recurso.texto}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Buy box */}
