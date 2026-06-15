@@ -9,8 +9,8 @@ import logo from "@/public/logo1.png";
 const ENLACES = [
   { href: "/", label: "Inicio" },
   { href: "/importacion", label: "Importación" },
-  { href: "/guia", label: "Guía de importación" },
   { href: "/stock", label: "Stock" },
+  { href: "/guia", label: "Guía de importación" },
   { href: "/sobre-nosotros", label: "Sobre nosotros" },
   { href: "/contacto", label: "Contacto" },
 ];

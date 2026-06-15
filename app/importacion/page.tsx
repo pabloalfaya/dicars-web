@@ -35,7 +35,7 @@ const PASOS = [
   },
   {
     titulo: "Documentación",
-    texto: "Gestionamos impuestos, ITV y matriculación por ti.",
+    texto: "Gestionamos impuestos, ITV y matriculación por ti en menos de 2 semanas.",
   },
   {
     titulo: "Entrega",

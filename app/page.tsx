@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/logo1.png";
-import { getCochesDestacados } from "@/lib/cars";
-import { CarCard } from "@/components/car-card";
+import { CarThumb } from "@/components/car-thumb";
 import {
   miniaturaYoutube,
   urlYoutube,
@@ -13,6 +12,37 @@ const VENTAJAS = [
   "Asesoramiento cercano y un solo interlocutor.",
   "Coches revisados e importación bajo demanda.",
   "Gestión completa de transporte y matriculación.",
+];
+
+const DESTACADOS = [
+  {
+    marca: "Volkswagen",
+    modelo: "Golf GTI",
+    titulo: "Entrega Volkswagen Golf GTI",
+    texto:
+      "Carlos buscaba un GTI bien cuidado y con historial. Lo localizamos en Múnich y lo tuvo en casa en tres semanas.",
+  },
+  {
+    marca: "Audi",
+    modelo: "A4 Avant",
+    titulo: "Importación a la carta para Laura",
+    texto:
+      "Laura necesitaba un familiar diésel automático. Encontramos el A4 Avant perfecto y gestionamos todo el papeleo.",
+  },
+  {
+    marca: "BMW",
+    modelo: "Serie 3",
+    titulo: "Entrega BMW Serie 3 320d",
+    texto:
+      "Berlina con equipamiento alto comprada a un vendedor verificado y entregada matriculada y lista para circular.",
+  },
+  {
+    marca: "Mercedes-Benz",
+    modelo: "Clase A",
+    titulo: "Mercedes Clase A para Javier",
+    texto:
+      "Compacto premium casi nuevo y con bajo kilometraje, importado con ahorro frente al precio en España.",
+  },
 ];
 
 const VIDEOS: VideoYoutube[] = [
@@ -37,9 +67,7 @@ const VIDEOS: VideoYoutube[] = [
 
 export const revalidate = 60;
 
-export default async function Home() {
-  const destacados = await getCochesDestacados();
-
+export default function Home() {
   return (
     <>
       {/* HERO */}
@@ -93,19 +121,36 @@ export default async function Home() {
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                Llevamos años importando coches desde Alemania a España. Te
-                ayudamos a{" "}
+                Dicars nació con una idea clara: que cualquier persona en España
+                pueda acceder al mejor mercado de coches de Europa sin tener que
+                convertirse en experto en logística. Llevamos años importando
+                desde Alemania y conocemos cada paso del camino — desde la
+                búsqueda en portales locales hasta la matriculación definitiva
+                en tu nombre.
+              </p>
+              <p>
+                Te ayudamos a{" "}
                 <strong className="font-semibold text-foreground">
                   comprar mejor
                 </strong>
-                : más oferta, mejores precios y un proceso transparente de
-                principio a fin.
+                : más oferta que en el mercado nacional, mejores precios y un
+                proceso transparente de principio a fin. Ya sea un compacto para
+                el día a día o el deportivo que llevas tiempo buscando,
+                trabajamos contigo para encontrar la unidad que encaje con tu
+                presupuesto y tus expectativas.
               </p>
               <p>
                 Nos encargamos de la búsqueda, la inspección, el transporte y
                 todo el papeleo, para que recibas tu coche listo para circular y
                 sin sorpresas: ni impuestos ocultos, ni problemas de
-                documentación.
+                documentación, ni trámites que no entiendas.
+              </p>
+              <p>
+                Si prefieres elegir entre unidades ya revisadas, tenemos stock
+                disponible. Y si buscas algo concreto que no está en el
+                catálogo, gestionamos una importación a la carta con plazos y
+                costes desglosados por escrito antes de que avances. Un solo
+                interlocutor, de la primera llamada a la entrega de las llaves.
               </p>
             </div>
             <ul className="mt-8 space-y-3">
@@ -159,17 +204,28 @@ export default async function Home() {
             </p>
           </div>
 
-          {destacados.length > 0 ? (
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {destacados.map((coche) => (
-                <CarCard key={coche._id} coche={coche} />
-              ))}
-            </div>
-          ) : (
-            <p className="mt-12 text-center text-muted-foreground">
-              Pronto publicaremos nuestros coches destacados.
-            </p>
-          )}
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {DESTACADOS.map((item) => (
+              <article
+                key={item.titulo}
+                className="overflow-hidden rounded-2xl border border-border bg-muted"
+              >
+                <CarThumb
+                  marca={item.marca}
+                  modelo={item.modelo}
+                  className="aspect-[4/3] w-full"
+                />
+                <div className="p-5">
+                  <h3 className="font-serif text-lg font-semibold leading-snug text-foreground">
+                    {item.titulo}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {item.texto}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
 
           <div className="mt-12 flex justify-center">
             <Link
