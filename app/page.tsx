@@ -16,32 +16,36 @@ const VENTAJAS = [
 
 const DESTACADOS = [
   {
+    marca: "Mercedes-Benz",
+    modelo: "CLA 250",
+    foto: "/d1.png",
+    titulo: "Mercedes CLA 250 para FL Garage",
+    texto:
+      "FL Garage en Barcelona nos contrató para importar el nuevo MERCEDES CLA 250 para su clienta, que recogimos en concesionario oficial Mercedes.",
+  },
+  {
     marca: "Volkswagen",
     modelo: "Golf GTI",
-    titulo: "Entrega Volkswagen Golf GTI",
+    foto: "/d2.png",
+    titulo: "VW Golf GTI recogido en Bitterfeld",
     texto:
-      "Carlos buscaba un GTI bien cuidado y con historial. Lo localizamos en Múnich y lo tuvo en casa en tres semanas.",
+      "Este VW GOLF GTI que recogimos en Bitterfeld para el stock de nuestro cliente ya tiene dueño. Concesionario oficial, tranquilidad asegurada.",
+  },
+  {
+    marca: "Porsche",
+    modelo: "Panamera",
+    foto: "/d3.png",
+    titulo: "Porsche Panamera dirección Barcelona",
+    texto:
+      "Importamos este PORSCHE PANAMERA dirección Barcelona con libro de mantenimiento completo en Porsche y garantía Porsche Approved.",
   },
   {
     marca: "Audi",
-    modelo: "A4 Avant",
-    titulo: "Importación a la carta para Laura",
+    modelo: "S3",
+    foto: "/d4.png",
+    titulo: "Audi S3 2023 para FL Garage",
     texto:
-      "Laura necesitaba un familiar diésel automático. Encontramos el A4 Avant perfecto y gestionamos todo el papeleo.",
-  },
-  {
-    marca: "BMW",
-    modelo: "Serie 3",
-    titulo: "Entrega BMW Serie 3 320d",
-    texto:
-      "Berlina con equipamiento alto comprada a un vendedor verificado y entregada matriculada y lista para circular.",
-  },
-  {
-    marca: "Mercedes-Benz",
-    modelo: "Clase A",
-    titulo: "Mercedes Clase A para Javier",
-    texto:
-      "Compacto premium casi nuevo y con bajo kilometraje, importado con ahorro frente al precio en España.",
+      "AUDI S3 2023 directo hacia FL Garage para una entrega a la carta de su cliente. Vehículo procedente de Audi Selection Plus.",
   },
 ];
 
@@ -210,11 +214,23 @@ export default function Home() {
                 key={item.titulo}
                 className="overflow-hidden rounded-2xl border border-border bg-muted"
               >
-                <CarThumb
-                  marca={item.marca}
-                  modelo={item.modelo}
-                  className="aspect-[4/3] w-full"
-                />
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+                  {item.foto ? (
+                    <Image
+                      src={item.foto}
+                      alt={`${item.marca} ${item.modelo}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <CarThumb
+                      marca={item.marca}
+                      modelo={item.modelo}
+                      className="absolute inset-0 h-full w-full"
+                    />
+                  )}
+                </div>
                 <div className="p-5">
                   <h3 className="font-serif text-lg font-semibold leading-snug text-foreground">
                     {item.titulo}

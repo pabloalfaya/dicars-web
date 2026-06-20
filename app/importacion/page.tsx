@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CarThumb } from "@/components/car-thumb";
 
@@ -45,46 +46,52 @@ const PASOS = [
 
 const RECIENTES = [
   {
+    marca: "Cupra",
+    modelo: "Formentor VZ",
+    foto: "/t1.png",
+    titulo: "Importación Cupra Formentor VZ",
+    texto:
+      "Este Cupra Formentor VZ minuciosamente escogido está dirigido hacia el stock para un cliente profesional en Montornes del Valles.",
+  },
+  {
     marca: "Volkswagen",
     modelo: "Golf GTI",
-    titulo: "Entrega Volkswagen Golf GTI",
+    foto: "/t2.png",
+    titulo: "VW Golf GTI para Compraventa",
     texto:
-      "Carlos buscaba un GTI bien cuidado y con historial. Lo localizamos en Múnich y lo tuvo en casa en tres semanas.",
+      "Nuestro cliente Compraventa necesitaba un nuevo vehículo en su stock. Buscamos, negociamos, revisamos y recogemos en concesionario oficial.",
   },
   {
     marca: "Audi",
-    modelo: "A4 Avant",
-    titulo: "Importación a la carta para Laura",
+    modelo: "S3",
+    foto: "/t3.png",
+    titulo: "Revisión y recogida Audi S3",
     texto:
-      "Laura necesitaba un familiar diésel automático. Encontramos el A4 Avant perfecto y gestionamos todo el papeleo.",
+      "AUDI S3 para FLGarage directo a ser entregado a su cliente mediante una importación a la carta. Gestionamos revisión mecánica y documental.",
   },
   {
-    marca: "BMW",
-    modelo: "Serie 3",
-    titulo: "Entrega BMW Serie 3 320d",
+    marca: "Peugeot",
+    modelo: "208 GTI",
+    foto: "/t4.png",
+    titulo: "Peugeot 208 GTI para Ivan",
     texto:
-      "Berlina con equipamiento alto comprada a un vendedor verificado y entregada matriculada y lista para circular.",
+      "Ivan necesitaba un nuevo vehículo potente, fiable y moderno. Le brindamos esta oportunidad con el Peugeot 208 GTI 200cv por menos de 7.000€.",
   },
   {
-    marca: "Mercedes-Benz",
-    modelo: "Clase A",
-    titulo: "Mercedes Clase A para Javier",
+    marca: "Cupra",
+    modelo: "Formentor",
+    foto: "/t5.png",
+    titulo: "Cupra Formentor a la Carta",
     texto:
-      "Compacto premium casi nuevo y con bajo kilometraje, importado con ahorro frente al precio en España.",
+      "FLGarage en Barcelona nos contrató para una importación integral para este Cupra Formentor de procedencia original Italiana y situado en Alemania.",
   },
   {
-    marca: "Tesla",
-    modelo: "Model 3",
-    titulo: "Importación Tesla Model 3",
+    marca: "Porsche",
+    modelo: "Panamera",
+    foto: "/t6.png",
+    titulo: "Porsche Panamera para Barcelona",
     texto:
-      "Eléctrico con gran autonomía localizado en Alemania, transportado e inscrito sin complicaciones.",
-  },
-  {
-    marca: "Škoda",
-    modelo: "Octavia Combi",
-    titulo: "Entrega Škoda Octavia Combi",
-    texto:
-      "El familiar práctico por excelencia, revisado y entregado con seguimiento durante todo el proceso.",
+      "Espectacular Porsche Panamera que cumple todos los requisitos que interpone nuestro cliente: Mantenimientos Completos y Garantía Oficial Porsche.",
   },
 ];
 
@@ -161,11 +168,15 @@ export default function ImportacionPage() {
             </Link>
           </div>
 
-          <CarThumb
-            marca="Dicars"
-            modelo="Importación"
-            className="aspect-[4/3] w-full rounded-3xl border border-border"
-          />
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-border bg-muted">
+            <Image
+              src="/grande.png"
+              alt="Revisión de coche importado por Dicars"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -220,11 +231,24 @@ export default function ImportacionPage() {
               key={item.titulo}
               className="overflow-hidden rounded-2xl border border-border bg-muted"
             >
-              <CarThumb
-                marca={item.marca}
-                modelo={item.modelo}
-                className="aspect-[4/3] w-full"
-              />
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+                {item.foto ? (
+                  <Image
+                    src={item.foto}
+                    alt={`${item.marca} ${item.modelo}`}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                ) : (
+                  <CarThumb
+                    marca={item.marca}
+                    modelo={item.modelo}
+                    className="absolute inset-0 h-full w-full"
+                  />
+                )}
+              </div>
               <div className="p-5">
                 <h3 className="font-serif text-lg font-semibold leading-snug text-foreground">
                   {item.titulo}
