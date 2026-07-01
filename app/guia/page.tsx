@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { CheckoutButton } from "@/components/checkout-button";
 import { PaymentMethods } from "@/components/payment-methods";
 
 export const metadata: Metadata = {
@@ -155,22 +155,13 @@ export default function GuiaPage() {
             </p>
 
             <div className="mt-8 space-y-3">
-              {/* Placeholder de compra — se conectará a Stripe en una fase posterior */}
-              <button
-                type="button"
-                className="w-full cursor-not-allowed rounded-full bg-primary px-6 py-4 text-sm font-bold uppercase tracking-[0.2em] text-primary-foreground opacity-90"
-                aria-disabled="true"
-                title="El pago online estará disponible próximamente"
-              >
+              <CheckoutButton className="w-full rounded-full bg-primary px-6 py-4 text-sm font-bold uppercase tracking-[0.2em] text-primary-foreground transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-70">
                 Comprar ahora
-              </button>
+              </CheckoutButton>
               <PaymentMethods />
               <p className="text-center text-xs text-muted-foreground">
-                El pago online estará activo muy pronto. Mientras tanto,{" "}
-                <Link href="/contacto" className="text-primary hover:underline">
-                  escríbenos
-                </Link>{" "}
-                y te la facilitamos.
+                Pago seguro con Stripe. Tras completar la compra recibirás la
+                guía por email al instante.
               </p>
             </div>
 
