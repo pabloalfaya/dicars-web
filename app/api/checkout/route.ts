@@ -32,6 +32,7 @@ export async function POST() {
       ],
       success_url: `${baseUrl}/gracias?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/guia`,
+      allow_promotion_codes: true,
       // Recogemos el email en Checkout para enviar la guía tras el pago.
       customer_creation: "always",
       billing_address_collection: "auto",
